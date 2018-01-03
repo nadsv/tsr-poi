@@ -1,0 +1,7 @@
+.result_row {
+	cursor: pointer;
+}
+
+.result_row:hover {
+	color: #0275d8; 
+}

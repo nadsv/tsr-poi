@@ -1,0 +1,10 @@
+.app {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 100vh;
+}
+
+.main {
+	margin: 20px 30px auto 30px;
+}

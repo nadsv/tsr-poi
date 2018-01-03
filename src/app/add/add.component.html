@@ -1,0 +1,139 @@
+<div class="col-md-offset-3" >
+	<form class="add-form" [formGroup]="requestForm" (ngSubmit)="onSaveRequest()">
+		<div class="row">
+			<div class="form-group col-md-2">
+		        <label for="request-num">№ заявления</label>
+		        <input type="text" class="form-control"  formControlName="requestNum" id="request-num" readonly>
+	        </div>
+	        <div class="form-group col-md-2">
+		        <label for="request-date">Дата заявления</label>
+		        <input type="date" class="form-control"  formControlName="requestDate" id="request-date">
+	        </div>
+	        <div class="form-group col-md-2">
+		        <label for="full-request-date">Дата полного пакета</label>
+		        <input type="date" class="form-control"  formControlName="fullRequestDate">
+	        </div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-md-3">
+		        <label for="kind">Вид</label>
+		        <select class="form-control"  formControlName="kind" id="kind">
+		        	<option>Обеспечение</option>
+		        	<option>Компенсация</option>
+		        	<option>Компенсация (собаки)</option>
+		        	<option>Услуги</option>
+		        </select>
+	        </div>
+    		<div class="form-group col-md-2">
+		        <label for="snils">СНИЛС</label>
+		        <input type="text" class="form-control" formControlName="snils" id="snils">
+	        </div>
+	        <button class="btn btn--import" type="button" (click)="onImport(requestForm.get('snils').value)">Импорт<br> из ЕИИС</button>
+	    </div>
+	    <div class="row">
+	        <div class="form-group col-md-6">
+		        <label for="name">ФИО</label>
+		        <input type="text" class="form-control" formControlName="name" id="name">
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="form-group col-md-6">
+		        <label for="address">Адрес</label>
+		        <input type="text" class="form-control" formControlName="address" id="address">
+	        </div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-md-6">
+		        <label for="prostheses">Затребованные ТСР и ПОИ</label>
+		        <textarea class="form-control"  
+		        formControlName="prostheses" 
+		        id="prostheses" 
+		        rows="5" 
+		        (dblclick) = "onProsthesesDoubleClick()"
+		        ></textarea>
+	        </div>
+    	</div>
+    	<div class="row">
+    		<div class="form-form-group col-md-2">
+			  <label class="form-check-label" for="passport">
+			    <input class="form-check-input" type="checkbox" formControlName="passport" id="passport">
+			    Копия паспорта
+			  </label>
+			</div>
+			<div class="form-form-group col-md-2">
+			  <label class="form-check-label" for="procuration">
+			    <input class="form-check-input" type="checkbox" formControlName="procuration" id="procuration">
+			    Доверенность
+			  </label>
+			</div>
+			<div class="form-form-group col-md-2">
+			  <label class="form-check-label" for="program">
+			    <input class="form-check-input" type="checkbox" formControlName="program" id="program">
+			    ИПР
+			  </label>
+			</div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-md-6">
+		        <label for="docs">Другие документы</label>
+		        <textarea class="form-control"  formControlName="docs" id="docs" rows="2"></textarea>
+	        </div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-md-3">
+		        <label for="delivery">Способ отправки</label>
+		        <select class="form-control"  formControlName="delivery" id="delivery">
+		        	<option>Лично</option>
+		        	<option>Почта</option>
+		        	<option>ЕПГУ</option>
+		        	<option>МФЦ</option>
+		        </select>
+	        </div>
+	        <div class="form-group col-md-3">
+		        <label for="request-user">Принял</label>
+		        <input class="form-control"  formControlName="requestUser" id="request-user">
+	        </div>
+    	</div>
+		<button class="btn" type="submit" [disabled]="requestForm.invalid || requestIsSaved && !isAdmin">Сохранить заявку</button>
+	</form>
+</div>
+<hr *ngIf="requestIsSaved">
+<div class="col-md-offset-3" *ngIf="requestIsSaved">
+	<form class="add-form" [formGroup]="decisionForm" (ngSubmit)="onSaveDecision()">
+		<div class="row">
+			<div class="form-group col-md-3">
+		        <label for="decision-num">№ решения</label>
+		        <input type="text" class="form-control"  formControlName="decisionNum" id="decision-num" readonly>
+	        </div>
+	        <div class="form-group col-md-3">
+		        <label for="decision-date">Дата решения</label>
+		        <input type="date" class="form-control"  formControlName="decisionDate" id="decision-date">
+	        </div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-md-6">
+		        <label for="approved-prostheses">Обеспеченные ТСР и ПОИ</label>
+		        <textarea class="form-control"  formControlName="approvedProstheses" id="approved-prostheses" rows="5"></textarea>
+	        </div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-md-3">
+		        <label for="desicion-portion">Обеспечение</label>
+		        <select class="form-control"  formControlName="decisionPortion" id="desicion-portion" rows="3">
+		        	<option>Полностью</option>
+		        	<option>Частично</option>
+		        	<option>Отказ</option>
+		        </select>
+	        </div>
+	        <div class="form-group col-md-3">
+		        <label for="decision-user">Исполнитель</label>
+		        <input class="form-control"  formControlName="decisionUser" id="decision-user">
+	        </div>
+    	</div>
+		<button class="btn" type="submit" [disabled]="decisionForm.invalid || decisionIsSaved && !isAdmin">Сохранить решение</button>
+	</form>
+</div>
+<hr *ngIf="requestIsSaved">
+<div class="col-md-offset-3 col-md-6" *ngIf="requestIsSaved">
+	<button type="submit" class="btn btn__mrgn" (click)="delete()" [disabled]="!isAdmin">Удалить запись</button>
+</div>

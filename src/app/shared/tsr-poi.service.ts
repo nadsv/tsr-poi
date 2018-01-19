@@ -10,7 +10,10 @@ import 'rxjs/add/operator/catch';
 export class TsrPoiService {
     apiUrl: string;
     user: string;
+    post: string = '';
     isAdmin: boolean;
+    request: any;
+    fromForms: boolean = false;
     
     constructor(private http: Http) {
         this.apiUrl = ' /tsr-poi/api/';

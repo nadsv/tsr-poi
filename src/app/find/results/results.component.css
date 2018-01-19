@@ -5,3 +5,11 @@
 .result_row:hover {
 	color: #0275d8; 
 }
+
+.row {
+    margin: 0; 
+}
+
+.wrapper {
+	padding: 15px;
+}

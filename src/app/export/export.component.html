@@ -1,3 +1,15 @@
-<p>
-  export works!
-</p>
+<form class="col-md-offset-4 col-md-6" [formGroup]="exportForm" (ngSubmit)="onSubmit()">
+	<div class="row">
+	        <div class="form-group col-md-3">
+		        <label for="request-start-date" >Дата заявления C</label>
+		        <input type="date" class="form-control"  formControlName="requestStartDate" id="request-start-date">
+	        </div>
+	        <div class="form-group col-md-3">
+		        <label for="request-end-date" >Дата заявления ПО</label>
+		        <input type="date" class="form-control"  formControlName="requestEndDate" id="request-end-date">
+	        </div>		
+	</div>
+	<div class="row col-md-6">
+		<button type="submit" class="btn btn-default center-block">Выгрузить</button>
+	</div>
+</form>

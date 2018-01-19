@@ -1,4 +1,4 @@
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-xs-12">
+<div>
 	<div class="row">
 		<div class="wrapper">
 			<table class="table table-bordered">
@@ -6,6 +6,7 @@
 					<th class="text-center">№ заявления</th>
 					<th class="text-center">Дата заявления</th>
 					<th class="text-center">Дата полного пакета</th>
+					<th class="text-center">Способ отправки</th>
 					<th class="text-center">№ решения</th>
 					<th class="text-center">Дата решения</th>
 					<th class="text-center">СНИЛС</th>
@@ -18,6 +19,7 @@
 					<td class="text-center">{{request.request_num}}</td>
 					<td class="text-center">{{request.request_date}}</td>
 					<td class="text-center">{{request.full_request_date}}</td>
+					<td class="text-center">{{request.delivery}}</td>
 					<td class="text-center">{{request.decision_num}}</td>
 					<td class="text-center">{{request.decision_date}}</td>
 					<td class="text-center">{{request.snils}}</td>

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ExportComponent } from './export.component';
-//import { ExportService } from './mailing.service';
 
 
 @NgModule ({
@@ -10,7 +10,8 @@ import { ExportComponent } from './export.component';
 		ExportComponent
 	],
 	imports: [
-		CommonModule
+		CommonModule,
+		ReactiveFormsModule
 	],
 	exports: [
 	    ExportComponent

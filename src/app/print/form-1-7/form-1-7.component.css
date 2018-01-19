@@ -1,0 +1,32 @@
+.doc {
+	width: 700px;
+	margin: 0 auto;
+}
+
+.doc__address {
+	font-size: 10pt;
+	width: 40%;
+	float: right;
+}
+
+.doc__title {
+	text-align: center;
+	font-size: 12pt;
+	clear: right;
+	padding: 20px 0 20px 0;
+	font-weight: bold;
+}
+
+.doc__p {
+	font-size: 10pt;
+	text-align: justify;
+}
+
+.doc__p--warn {
+	font-weight: bold;
+}
+
+.doc__field {
+	outline: none;
+	border: none;
+}

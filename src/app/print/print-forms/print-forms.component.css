@@ -1,0 +1,11 @@
+.dropdown-menu {
+    display: block;
+    top: auto;
+	bottom: 105%;
+}
+
+.dropdown-item {
+	display: block;
+	padding: 3px 10px 3px 10px;
+	min-width: 450px;
+}

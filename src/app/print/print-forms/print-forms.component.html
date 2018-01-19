@@ -1,0 +1,7 @@
+<div class="dropdown">
+  <button class="btn" type="button" id="dropdownMenuButton" (click)="onClick()">
+    Печатать
+  </button>
+  <div class="dropdown-menu" *ngIf="showMenu">
+    <a *ngFor="let form of forms" class="dropdown-item" routerLink="/print/{{form.url}}">{{form.name}}</a>
+  </div>

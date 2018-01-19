@@ -1,0 +1,53 @@
+.doc {
+	width: 700px;
+	margin: 0 auto;
+}
+
+.doc__person {
+	font-size: 10pt;
+	width: 40%;
+	float: right;
+}
+
+.doc__title {
+	text-align: center;
+	font-size: 12pt;
+	clear: right;
+	padding: 20px 0 20px 0;
+	font-weight: bold;
+}
+
+.doc__warning {
+	text-align: center;
+	font-size: 10pt;
+	clear: right;
+	font-weight: bold;
+}
+
+.doc__p {
+	font-size: 10pt;
+	text-align: justify;
+}
+
+.doc__person-name {
+	text-align: center;
+	clear: both;
+}
+
+.doc__num {
+	float: right;
+}
+
+.doc__date {
+	float: left;
+}
+
+.doc__small-text {
+	font-size: 8pt;
+	text-align: justify;
+}
+
+.doc__field {
+	outline: none;
+	border: none;
+}

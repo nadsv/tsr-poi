@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../auth/auth.service';
+import { TsrPoiService } from '../../shared/tsr-poi.service';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { AuthService } from '../../auth/auth.service';
 export class HeaderComponent implements OnInit {
 	
 	constructor(private auth: AuthService,
+    private tsrPoiService: TsrPoiService,
 		private router: Router) {}
 
 	ngOnInit() {
@@ -22,12 +24,16 @@ export class HeaderComponent implements OnInit {
   	}
 
   	reload() {
+    const url = (this.tsrPoiService.fromForms) ? '/'+this.tsrPoiService.request.id : '';
+   
 		if (this.router.navigated === false) {
-    		this.router.navigateByUrl('/request');
+    		this.router.navigateByUrl('/request' + url);
+        
   		} else {
     		this.router.navigateByUrl(`/`).then(
       			() => {
-        			this.router.navigateByUrl(`/request`);
+        			this.router.navigateByUrl(`/request` + url);
+              
       		});
   		}
 	}

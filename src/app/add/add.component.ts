@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TsrPoiService } from '../shared/tsr-poi.service';
 import { AddService } from './add.service';
 
+
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -28,6 +29,7 @@ export class AddComponent implements OnInit {
 		this.createForm(request);
     this.requestIsSaved = false;
     this.isAdmin = this.tsrPoiService.isAdmin;
+    this.tsrPoiService.fromForms = false;
 					        
 		this.route.params.subscribe( 
             ( params ) => { 
@@ -40,6 +42,8 @@ export class AddComponent implements OnInit {
 					        	          .subscribe(
 					        		          	(data) => { const request = this.addService.getRequest(data); 
 					        						                this.initForm(request);
+                                              this.tsrPoiService.request = request;
+                                              this.decisionIsSaved = (+request.decisionNum > 0);
 					        			                    },
 					        			        ( error ) => alert( 'Ошибка получения данных!' )
 					        		)
@@ -61,6 +65,8 @@ export class AddComponent implements OnInit {
         			this.requestIsSaved = true;
         			this.updating = true;
         			window.history.pushState('', '', 'request/' + this.addService.id);
+              this.tsrPoiService.request = this.requestForm.value;
+              this.tsrPoiService.request.id = this.addService.id 
         			alert('Заявка успешно сохранена!');
         		},
 			    		   
@@ -70,6 +76,7 @@ export class AddComponent implements OnInit {
         	this.tsrPoiService.changeData(this.tsrPoiService.apiUrl + 'update-request.php', this.requestForm.value)
 			.subscribe(
         		item  => { 
+              this.tsrPoiService.request = this.requestForm.value;
         			alert('Заявка успешно обновлена!');
         		},
         		error => alert('Ошибка обновления заявки!')
@@ -98,6 +105,7 @@ export class AddComponent implements OnInit {
 				this.requestForm.controls['name'].setValue(person.name); 
 			    this.requestForm.controls['address'].setValue(person.addr); 
 			    this.requestForm.controls['prostheses'].setValue(person.tsrpoi); 
+          this.requestForm.controls['program'].setValue(person.program); 
 			} else {
 				alert('Заявитель не найден!')
 			}
@@ -126,15 +134,16 @@ export class AddComponent implements OnInit {
       		program: new FormControl(request.program),
       		procuration: new FormControl(request.procuration),
       		docs: new FormControl(request.docs),
-      		requestUser: new FormControl(request.requestUser, Validators.required)
+      		requestUser: new FormControl(request.requestUser, Validators.required),
+          description: new FormControl(request.description)
       	});
 
       	this.decisionForm = new FormGroup({
       		id: new FormControl(request.id),
       		decisionNum: new FormControl(request.decisionNum),
       		decisionDate: new FormControl(request.decisionDate, Validators.required), 
-      		approvedProstheses: new FormControl(request.approvedProstheses),
-      		decisionPortion: new FormControl(request.decisionPortion),
+      		approvedProstheses: new FormControl(request.approvedProstheses, Validators.required),
+      		decisionPortion: new FormControl(request.decisionPortion, Validators.required),
       		decisionUser: new FormControl(request.decisionUser, Validators.required)
       	});
 
@@ -152,10 +161,12 @@ export class AddComponent implements OnInit {
       	this.requestForm.controls['delivery'].setValue(request.delivery);
       	this.requestForm.controls['prostheses'].setValue(request.prostheses);
       	this.requestForm.controls['passport'].setValue(request.passport);
-      	this.requestForm.controls['program'].setValue(request.program);
+        this.requestForm.controls['program'].setValue(request.program);
+      	//this.requestForm.controls['requirement'].setValue(request.requirement);
       	this.requestForm.controls['procuration'].setValue(request.procuration);
       	this.requestForm.controls['docs'].setValue(request.docs);
       	this.requestForm.controls['requestUser'].setValue(request.requestUser);
+        this.requestForm.controls['description'].setValue(request.description);
 
       	this.decisionForm.controls['id'].setValue(request.id);
       	this.decisionForm.controls['decisionNum'].setValue(request.decisionNum);
@@ -174,6 +185,22 @@ export class AddComponent implements OnInit {
           ()=> alert('Ошибка удаления записи!')
         )
     } 
+  }
+
+  deleteDecision() {
+    if (confirm('Удалить решение?')) {
+      this.tsrPoiService.changeData(this.tsrPoiService.apiUrl + 'del-decision.php', {id: this.addService.id}).subscribe(
+          ()=> {
+            this.decisionForm.controls['decisionNum'].setValue(0);
+            this.decisionForm.controls['decisionDate'].setValue('0000-00-00');
+            this.decisionForm.controls['approvedProstheses'].setValue('');
+            this.decisionForm.controls['decisionPortion'].setValue('');
+            this.decisionForm.controls['decisionUser'].setValue('');
+            this.decisionIsSaved = false;
+          },
+          ()=> alert('Ошибка удаления решения!')
+        )
+    }
   }
 
 }

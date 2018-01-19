@@ -1,0 +1,51 @@
+.doc {
+	width: 700px;
+	margin: 0 auto;
+}
+
+.requisites {
+	float: left;
+	font-size: 9pt;
+	text-align: center;
+	width: 300px;
+}
+
+.application {
+	clear: both;
+	width: 170px;
+	font-size: 6pt;
+	float: right;
+}
+
+.requisites__fund {
+	font-weight: bold;
+	text-transform:  uppercase;
+}
+
+.person__info {
+	float: right;
+	font-size: 10pt;
+	width: 250px;
+}
+
+.doc__title {
+	text-align: center;
+	font-size: 12pt;
+	clear: both;
+	padding: 20px 0 20px 0;
+	font-weight: bold;
+}
+
+.doc__person-name {
+	text-align: center;
+}
+
+.doc__p {
+	font-size: 11pt;
+	text-align: justify;
+}
+
+.doc__field {
+	outline: none;
+	border: none;
+}

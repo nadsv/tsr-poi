@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { TsrPoiService } from '../shared/tsr-poi.service';
 import { Subject } from 'rxjs/Subject';
 
+import { decodeHtml } from '../shared/lib.module';
+
 @Injectable()
 export class AddService {
     id: number;
@@ -18,7 +20,7 @@ export class AddService {
 
     	if ( data.id ) {
 			const decisionUser = data.decision_user || currentUser;
-      const decisionDate = data.decision_date || formatDate;
+      const decisionDate = (data.decision_date !== '0000-00-00') ? data.decision_date : formatDate;
 			return {
 					id: data.id,
 					requestNum: data.request_num,
@@ -29,17 +31,18 @@ export class AddService {
       				kind: data.kind,
       				address: data.address,
       				delivery: data.delivery,
-      				prostheses: data.prostheses,
-      				passport: data.passport,
-      				program: data.program,
-      				procuration: data.procuration,
-      				docs: data.docs,
+      				prostheses: decodeHtml(data.prostheses),
+      				passport: (+data.passport) ? data.passport : '',
+      				program: decodeHtml(data.program),
+      				procuration: (+data.procuration) ? data.procuration : '',
+      				docs: decodeHtml(data.docs),
       				requestUser: data.request_user,
       				decisionNum: data.decision_num,
       				decisionDate: decisionDate, 
-      				approvedProstheses: data.approved_prostheses,
+      				approvedProstheses: decodeHtml(data.approved_prostheses),
       				decisionPortion: data.decision_portion,
-      				decisionUser: decisionUser
+      				decisionUser: decisionUser,
+              description: decodeHtml(data.description)
       				} 
 				}
     	else {
@@ -63,7 +66,8 @@ export class AddService {
       					decisionDate: formatDate, 
       					approvedProstheses: '',
       					decisionPortion: '',
-      					decisionUser: currentUser 
+      					decisionUser: currentUser,
+                description: '' 
 					}
     	}
     }

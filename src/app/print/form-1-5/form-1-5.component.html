@@ -1,0 +1,31 @@
+<div class="doc">
+	<div class="requisites">
+                    <p class="requisites__fund">Фонд социального страхования<br>Российской Федерации</p>
+                    <p class="requisites__regional">
+                        Государственное учреждение – Курское региональное отделение
+                        Фонда социального страхования Российской Федерации
+                    </p>
+                    <p class="requisites__address">
+                        ул. Никитская, д. 16, Курск, 305029<br>
+                        Тел.  (4712) 70-92-60, факс (4712) 70-92-78
+                    </p>
+    </div>
+    <div class="person__info">
+    	<b>{{doc.name}}</b><br>{{doc.address}}
+    </div>
+    <h1 class="doc__title">Уведомление<br>о постановке на учет по обеспечению услугами<br>№{{doc.decisionNum}} от {{doc.decisionDate | date:'dd.MM.yyyy'}}г.
+	</h1>
+	<p class="doc__person-name">Уважаемый(ая) {{doc.name}}!</p>
+	<p class="doc__p">Вы поставлены на учет в  Государственное учреждение- Курское региональное отделение Фонда социального страхования Российской Федерации</p>
+	<p class="doc__p">для обеспечения услугой:</p>
+	<p class="doc__p">{{doc.approvedProstheses}}</p>
+	<p class="doc__p">Основание (указываются реквизиты документа, на основании которого инвалиду, ветерану выдано уведомление):</p>
+	<p class="doc__p">индивидуальная программа реабилитации {{doc.program}}</p>
+	<p class="doc__p">заключение врачебной комиссии медицинской организации, оказывающей лечебно-профилактическую помощь, №	_______ от “____”_______________20____г.</p>
+	<p class="doc__p">Ваш регистрационный номер по постановке на учет <b>{{doc.decisionNum}}</b> от {{doc.decisionDate | date:'dd.MM.yyyy'}}</p>
+	<p class="doc__p">Справки по телефону: 72-23-69 </p>
+	<br>
+	<br>
+	<p class="doc__p"><input type="text" class="doc__field" placeholder="Должность" autofocus  (blur)="onBlur($event)" value="{{post}}">: ______________________ {{user}}</p>
+	<p class="doc__p">М.П.</p>
+</div>

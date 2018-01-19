@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AddComponent } from './add.component';
 import { AddService } from './add.service';
+import { PrintModule } from '../print/print.module';
+
 
 @NgModule ({
 	declarations: [
@@ -11,7 +13,8 @@ import { AddService } from './add.service';
 	],
 	imports: [
 		CommonModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		PrintModule
 	],
 	exports: [
 	    AddComponent

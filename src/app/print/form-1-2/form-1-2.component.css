@@ -1,0 +1,31 @@
+.doc {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.doc__title {
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.doc__person {
+	text-align: center;
+	text-decoration: underline;
+}
+
+.doc__table td, .doc__table th{
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
+
+.doc__small-text {
+	font-size: 8px;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.doc__line {
+	margin: 30px 0 0 0;
+	color: black;
+}

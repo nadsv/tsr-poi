@@ -5,20 +5,22 @@
 				<tr>
 					<th class="text-center">№ заявления</th>
 					<th class="text-center">Дата заявления</th>
-					<th class="text-center">Дата полного пакета</th>
+          <th class="text-center">Дата полного пакета</th>
+          <th class="text-center">Вид</th>
 					<th class="text-center">Способ отправки</th>
 					<th class="text-center">№ решения</th>
 					<th class="text-center">Дата решения</th>
 					<th class="text-center">СНИЛС</th>
 					<th class="text-center">ФИО</th>
 				</tr>
-				<tr *ngFor="let request of requests; let i = index;" 
-				    class="result_row" 
+				<tr *ngFor="let request of requests; let i = index;"
+				    class="result_row"
 				    (click)="SelectRow(request.id)"
 				    >
 					<td class="text-center">{{request.request_num}}</td>
 					<td class="text-center">{{request.request_date}}</td>
-					<td class="text-center">{{request.full_request_date}}</td>
+          <td class="text-center">{{request.full_request_date}}</td>
+          <td class="text-center">{{request.kind}}</td>
 					<td class="text-center">{{request.delivery}}</td>
 					<td class="text-center">{{request.decision_num}}</td>
 					<td class="text-center">{{request.decision_date}}</td>

@@ -17,7 +17,7 @@
     	<div class="row">
     		<div class="form-group col-md-3">
 		        <label for="kind">Вид</label>
-		        <select class="form-control"  formControlName="kind" id="kind">
+		        <select class="form-control"  formControlName="kind" id="kind" (change)="onKindChange($event)">
 		        	<option>Обеспечение</option>
 		        	<option>Компенсация</option>
 		        	<option>Компенсация (собаки)</option>
@@ -45,10 +45,10 @@
     	<div class="row">
     		<div class="form-group col-md-8">
 		        <label for="prostheses">Затребованные ТСР и ПОИ</label>
-		        <textarea class="form-control"  
-		        formControlName="prostheses" 
-		        id="prostheses" 
-		        rows="4" 
+		        <textarea class="form-control"
+		        formControlName="prostheses"
+		        id="prostheses"
+		        rows="4"
 		        (dblclick) = "onProsthesesDoubleClick()"
 		        ></textarea>
 	        </div>
@@ -78,7 +78,27 @@
 		        <label for="docs">Другие документы</label>
 		        <textarea class="form-control"  formControlName="docs" id="docs" rows="1"></textarea>
 	        </div>
-    	</div>
+      </div>
+      <div class="row" *ngIf="requestForm.get('kind').value.match('Компенсация')">
+        <div class="form-group col-md-2">
+          <label for="receive">Получение</label>
+          <select class="form-control"  formControlName="receive" id="receive" (change)="onReceiveChange($event)">
+            <option>Почта</option>
+            <option>Банк</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="account">Счет</label>
+          <input class="form-control"  formControlName="account" id="account"
+          [readonly]="requestForm.get('receive').value != 'Банк'">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="bic">БИК <span class="bic">{{ requestForm.get('bankName').value }}</span></label>
+          <input class="form-control"  formControlName="bic"
+          id="bic" (blur)="getBank(requestForm.get('bic').value)"
+          [readonly]="requestForm.get('receive').value != 'Банк'">
+        </div>
+      </div>
     	<div class="row">
     		<div class="form-group col-md-4">
 		        <label for="delivery">Отправка</label>

@@ -1,45 +1,45 @@
-<div class="col-lg-offset-2 col-lg-8">
+<div class="col-md-offset-2 col-md-8">
 <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
 	<div class="row">
-		<div class="form-group col-lg-2">
-		        <label for="request-num">№ заявления</label>
+		<div class="form-group col-md-2">
+		        <label for="request-num">№ заявл.</label>
 		        <input type="text" class="form-control"  formControlName="requestNum" id="request-num">
 	        </div>
-	        <div class="form-group col-lg-5">
+	        <div class="form-group col-md-5">
 		        <label for="request-start-date" >Дата заявления C</label>
 		        <input type="date" class="form-control"  formControlName="requestStartDate" id="request-start-date">
 	        </div>
-	        <div class="form-group col-lg-5">
+	        <div class="form-group col-md-5">
 		        <label for="request-end-date" >Дата заявления ПО</label>
 		        <input type="date" class="form-control"  formControlName="requestEndDate" id="request-end-date">
-	        </div>		
+	        </div>
 	</div>
 	<div class="row">
-		<div class="form-group col-lg-2">
-		    <label for="decision-num">№ решения</label>
+		<div class="form-group col-md-2">
+		    <label for="decision-num">№ решен.</label>
 		    <input type="text" class="form-control"  formControlName="decisionNum" id="decision-num">
 	    </div>
-	    <div class="form-group col-lg-5">
+	    <div class="form-group col-md-5">
 		        <label for="decision-start-date" >Дата решения C</label>
 		        <input type="date" class="form-control"  formControlName="decisionStartDate" id="decision-start-date">
 	    </div>
-	    <div class="form-group col-lg-5">
+	    <div class="form-group col-md-5">
 		    <label for="decision-end-date" >Дата решения ПО</label>
 		    <input type="date" class="form-control"  formControlName="decisionEndDate" id="decision-end-date">
 	    </div>
 	</div>
 	<div class="row">
-		<div class="form-group col-lg-5">
+		<div class="form-group col-md-5">
 		        <label for="snils" >СНИЛС</label>
 		        <input type="text" class="form-control"  formControlName="snils" id="snils">
 	    </div>
-	    <div class="form-group col-lg-7">
+	    <div class="form-group col-md-7">
 		    <label for="name" >ФИО</label>
 		    <input type="text" class="form-control"  formControlName="name" id="name">
 	    </div>
 	</div>
-	<div class="row col-lg-12">
-		<button type="submit" class="btn btn-default center-block">Найти</button>
+	<div class="row col-md-12">
+    <button type="submit" class="btn btn-default center-block">Найти</button>
 	</div>
 </form>
 </div>

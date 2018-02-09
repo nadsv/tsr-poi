@@ -16,7 +16,8 @@ export class ExportComponent implements OnInit {
 	ngOnInit() {
 		this.exportForm = new FormGroup({
 			requestStartDate: new FormControl(''),
-			requestEndDate: new FormControl('')
+      requestEndDate: new FormControl(''),
+      kind: new FormControl(''),
 		});
 	}
 
@@ -25,7 +26,7 @@ export class ExportComponent implements OnInit {
 			.subscribe(
 				() =>  window.location.href = this.tsrPoiService.apiUrl + 'request_list.xls',
 				() => alert('Ошибка выгрузки!')
-				)
+				);
 	}
 
 }

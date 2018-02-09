@@ -3,14 +3,9 @@
 	margin: 0 auto;
 }
 
-.requisites {
-	float: left;
-	font-size: 9pt;
-	text-align: center;
-	width: 300px;
-}
 
 .application {
+  margin-top:20px;
 	clear: both;
 	width: 170px;
 	font-size: 6pt;

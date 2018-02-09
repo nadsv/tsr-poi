@@ -17,7 +17,6 @@ import { ExportComponent } from './export.component';
 	    ExportComponent
 	],
 	providers: [
-		//ExportService
 	]
 	})
 export class ExportModule {}

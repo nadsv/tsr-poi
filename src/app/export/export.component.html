@@ -1,15 +1,25 @@
-<form class="col-md-offset-4 col-md-6" [formGroup]="exportForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="exportForm" (ngSubmit)="onSubmit()">
 	<div class="row">
-	        <div class="form-group col-md-3">
+	        <div class="form-group col-xs-3 col-xs-offset-2 ">
 		        <label for="request-start-date" >Дата заявления C</label>
 		        <input type="date" class="form-control"  formControlName="requestStartDate" id="request-start-date">
 	        </div>
-	        <div class="form-group col-md-3">
+	        <div class="form-group col-xs-3">
 		        <label for="request-end-date" >Дата заявления ПО</label>
 		        <input type="date" class="form-control"  formControlName="requestEndDate" id="request-end-date">
-	        </div>		
+          </div>
+          <div class="form-group col-xs-2">
+              <label for="kind">Вид</label>
+              <select class="form-control"  formControlName="kind" id="kind">
+                <option></option>
+                <option>Обеспечение</option>
+                <option>Компенсация</option>
+                <option>Компенсация (собаки)</option>
+                <option>Услуги</option>
+              </select>
+          </div>
 	</div>
-	<div class="row col-md-6">
+	<div class="row col-xs-6 col-xs-offset-3">
 		<button type="submit" class="btn btn-default center-block">Выгрузить</button>
 	</div>
 </form>
